@@ -9,9 +9,11 @@ router.post('/', function (req, res, next) {
     };
     
     const response = _.merge(object, req.body);
+    console.log(response);
     
     var json = JSON.stringify(response);
     var fs = require('fs');
+    
     fs.writeFile(__dirname + '/data.json', json, 'utf8', function(err){
         if (err) throw err;
     });
