@@ -9,8 +9,8 @@ router.post('/', function (req, res, next) {
     };
     
     const response = _.merge(object, req.body);
-    console.log(response);
-    
+    console.log("TESTEEEE" , response);
+
     var json = JSON.stringify(response);
     var fs = require('fs');
     
