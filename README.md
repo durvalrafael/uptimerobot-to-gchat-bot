@@ -1,6 +1,6 @@
-# Uptime Robot to gChat Bot
+# Uptime Robot to Google Chat Bot
 
- gChat middleware bot written in Node.js
+[Google Chat](https://chat.google.com) middleware bot written in Node.js
 
 [![Build Status](https://travis-ci.org/durvalrafael/uptimerobot-to-gchat-bot.svg?branch=master)](https://travis-ci.org/durvalrafael/uptimerobot-to-gchat-bot)
 
