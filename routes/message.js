@@ -1,6 +1,7 @@
-var express = require('express');
-var router = express.Router();
-var _ = require('lodash');
+const express = require('express');
+const router = express.Router();
+const _ = require('lodash');
+const http = require("http");
 
 router.post('/', function (req, res, next) {
     const object = {
@@ -9,11 +10,37 @@ router.post('/', function (req, res, next) {
     };
     
     const response = _.merge(object, req.body);
+    let message = `Status Bot: ${response.monitorFriendlyName} is ${response.alertTypeFriendlyName}. Detalhes: ${response.alertDetails}`;
+    let json = {
+        text: message
+    } 
     console.log("MESSAGE REVIECED" , response);
     console.log("QUERY", req.query);
 
-    var json = JSON.stringify(response);
-    var fs = require('fs');
+    var options = {
+        hostname: 'https://chat.googleapis.com',
+        port: 443,
+        path: `/v1/spaces/AAAAAZm1MIo/messages?key=${process.env.GCHAT_KEY}`,
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    };
+    var req = http.request(options, function (res) {
+        console.log('Status: ' + res.statusCode);
+        console.log('Headers: ' + JSON.stringify(res.headers));
+        res.setEncoding('utf8');
+        res.on('data', function (body) {
+            console.log('Body: ' + body);
+        });
+    });
+    req.on('error', function (e) {
+        console.log('problem with request: ' + e.message);
+    });
+    // write data to request body
+    req.write(JSON.stringify(json));
+    req.end();
+    
     
     res.send(response);
 
