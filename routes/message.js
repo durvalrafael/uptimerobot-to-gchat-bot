@@ -10,6 +10,7 @@ router.post('/', function (req, res, next) {
     
     const response = _.merge(object, req.body);
     console.log("MESSAGE REVIECED" , response);
+    console.log("QUERY", req.query);
 
     var json = JSON.stringify(response);
     var fs = require('fs');
