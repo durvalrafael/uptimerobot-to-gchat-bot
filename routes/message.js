@@ -18,7 +18,7 @@ router.post('/', function (req, res, next) {
     console.log("QUERY", req.query);
 
     var options = {
-        hostname: 'https://chat.googleapis.com',
+        hostname: 'chat.googleapis.com',
         port: 443,
         path: `/v1/spaces/AAAAAZm1MIo/messages?key=${process.env.GCHAT_KEY}`,
         method: 'POST',
