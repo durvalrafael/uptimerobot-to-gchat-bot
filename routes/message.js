@@ -19,11 +19,10 @@ router.post('/', function (req, res, next) {
 
     console.log("MESSAGE REVIECED" , response);
     console.log("QUERY", req.query);
-
     var options = {
         hostname: 'chat.googleapis.com',
         port: 443,
-        path: `/v1/spaces/AAAAAZm1MIo/messages?key=${process.env.GCHAT_KEY}`,
+        path: `/v1/spaces/${process.env.GCHAT_ROOM}/messages?key=${process.env.GCHAT_KEY}`,
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

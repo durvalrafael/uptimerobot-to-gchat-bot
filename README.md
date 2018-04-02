@@ -12,3 +12,4 @@ Este projeto tem como finalidae adicionar um meio de mandar mensagem em grupos o
 ### Variáveis de ambiente 
 
 * `GCHAT_KEY` = Chave do webhook usada para mandar a mensagem no Google Chat
+* `GCHAT_ROOM` = ID da Sala do Google Chat
